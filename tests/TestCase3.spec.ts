@@ -33,6 +33,8 @@ test.describe("@testCase3 Buy 2 Stuffed Frog, 5 Fluffy Bunny, 3 Valentine Bear",
 
     const calculatedPrice = await inCartPage.getCartItemTotalprice();
     const totalPriceOnPage = await inCartPage.getCartTotalPrice();
+    console.log("Calculated Price:", calculatedPrice);
+    console.log("Total Price on Page:", totalPriceOnPage);
 
     await expect(calculatedPrice).toEqual(totalPriceOnPage);
   });

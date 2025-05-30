@@ -1,3 +1,0 @@
-locator('tr.cart-item')
-3
-3

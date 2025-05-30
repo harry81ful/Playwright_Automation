@@ -5,13 +5,15 @@ test.describe("@testCase2 contact form page sucess test", () => {
   test.beforeEach(async ({ page, landingPage, contactFormPage }) => {
     await landingPage.goto();
     await page.waitForLoadState("networkidle");
+
     const isPageTitleVisible = await landingPage.isPageTitleVIsible();
     await expect(isPageTitleVisible).toBeTruthy();
+
     await landingPage.navBar("Contact");
     await expect(contactFormPage.contactFormHeader).toBeVisible();
   });
 
-  test("@testCase2 submit contacrt form with all fields filled", async ({
+  test("@testCase2 submit contact form with all fields filled", async ({
     page,
     contactFormPage,
   }) => {
