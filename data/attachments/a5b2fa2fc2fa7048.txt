@@ -1,0 +1,72 @@
+# Test info
+
+- Name: @testCase3 Buy 2 Stuffed Frog, 5 Fluffy Bunny, 3 Valentine Bear >> @testCase3 add 2 Stuffed Frog, 5 Fluffy Bunny, 3 Valentine Bear to cart and verify the count
+- Location: /home/runner/work/PlanIt_Automation/PlanIt_Automation/tests/TestCase3.spec.ts:13:7
+
+# Error details
+
+```
+Error: browserType.launch: Target page, context or browser has been closed
+Browser logs:
+
+╔════════════════════════════════════════════════════════════════════════════════════════════════╗
+║ Looks like you launched a headed browser without having a XServer running.                     ║
+║ Set either 'headless: true' or use 'xvfb-run <your-playwright-app>' before running Playwright. ║
+║                                                                                                ║
+║ <3 Playwright Team                                                                             ║
+╚════════════════════════════════════════════════════════════════════════════════════════════════╝
+Call log:
+  - <launching> /home/runner/.cache/ms-playwright/chromium-1169/chrome-linux/chrome --disable-field-trial-config --disable-background-networking --disable-background-timer-throttling --disable-backgrounding-occluded-windows --disable-back-forward-cache --disable-breakpad --disable-client-side-phishing-detection --disable-component-extensions-with-background-pages --disable-component-update --no-default-browser-check --disable-default-apps --disable-dev-shm-usage --disable-extensions --disable-features=AcceptCHFrame,AutoExpandDetailsElement,AvoidUnnecessaryBeforeUnloadCheckSync,CertificateTransparencyComponentUpdater,DeferRendererTasksAfterInput,DestroyProfileOnBrowserClose,DialMediaRouteProvider,ExtensionManifestV2Disabled,GlobalMediaControls,HttpsUpgrades,ImprovedCookieControls,LazyFrameLoading,LensOverlay,MediaRouter,PaintHolding,ThirdPartyStoragePartitioning,Translate --allow-pre-commit-input --disable-hang-monitor --disable-ipc-flooding-protection --disable-popup-blocking --disable-prompt-on-repost --disable-renderer-backgrounding --force-color-profile=srgb --metrics-recording-only --no-first-run --enable-automation --password-store=basic --use-mock-keychain --no-service-autorun --export-tagged-pdf --disable-search-engine-choice-screen --unsafely-disable-devtools-self-xss-warnings --no-sandbox --user-data-dir=/tmp/playwright_chromiumdev_profile-JSQbLt --remote-debugging-pipe --no-startup-window
+  - <launched> pid=6124
+  - [pid=6124][err] [6124:6124:0530/074236.783819:ERROR:ui/ozone/platform/x11/ozone_platform_x11.cc:249] Missing X server or $DISPLAY
+  - [pid=6124][err] [6124:6124:0530/074236.783862:ERROR:ui/aura/env.cc:257] The platform failed to initialize.  Exiting.
+
+```
+
+# Test source
+
+```ts
+   1 | import { test, expect } from "../fixtures/pomFixtures";
+   2 | import { itemToAdd } from "../utilities/util";
+   3 |
+   4 | test.describe("@testCase3 Buy 2 Stuffed Frog, 5 Fluffy Bunny, 3 Valentine Bear", () => {
+   5 |   test.beforeEach(async ({ page, landingPage, shopToys }) => {
+   6 |     await landingPage.goto();
+   7 |     await page.waitForLoadState("networkidle");
+   8 |     const isPageTitleVisible = await landingPage.isPageTitleVIsible();
+   9 |     await expect(isPageTitleVisible).toBeTruthy();
+  10 |     await landingPage.navBar("Shop");
+  11 |   });
+  12 |
+> 13 |   test("@testCase3 add 2 Stuffed Frog, 5 Fluffy Bunny, 3 Valentine Bear to cart and verify the count", async ({
+     |       ^ Error: browserType.launch: Target page, context or browser has been closed
+  14 |     page,
+  15 |     shopToys,
+  16 |     landingPage,
+  17 |     inCartPage,
+  18 |   }) => {
+  19 |     let totalItems = 0;
+  20 |     for (const item of itemToAdd) {
+  21 |       await shopToys.searchForToy(item.name, item.quantity);
+  22 |       totalItems += item.quantity;
+  23 |     }
+  24 |     const count = await landingPage.getCartCount();
+  25 |     await expect(totalItems).toEqual(count);
+  26 |
+  27 |     await landingPage.navBar("Cart");
+  28 |     await page.waitForLoadState("networkidle");
+  29 |
+  30 |     const totalUniqueItemsadded = itemToAdd.length;
+  31 |     const itemCount = await inCartPage.itemsInCart();
+  32 |     await expect(itemCount).toEqual(totalUniqueItemsadded);
+  33 |
+  34 |     const calculatedPrice = await inCartPage.getCartItemTotalprice();
+  35 |     const totalPriceOnPage = await inCartPage.getCartTotalPrice();
+  36 |     console.log("Calculated Price:", calculatedPrice);
+  37 |     console.log("Total Price on Page:", totalPriceOnPage);
+  38 |
+  39 |     await expect(calculatedPrice).toEqual(totalPriceOnPage);
+  40 |   });
+  41 | });
+  42 |
+```

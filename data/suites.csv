@@ -1,0 +1,8 @@
+"DESCRIPTION","DURATION IN MS","NAME","PARENT SUITE","START TIME","STATUS","STOP TIME","SUB SUITE","SUITE","TEST CLASS","TEST METHOD"
+"","216","@testCase1 submit with invalid email","","Fri May 30 07:42:32 UTC 2025","failed","Fri May 30 07:42:32 UTC 2025","@testCase1 contact form page error test","tests/testCase1.spec.ts","",""
+"","148","@testCase1 submit form with only forename and surname","","Fri May 30 07:42:31 UTC 2025","failed","Fri May 30 07:42:31 UTC 2025","@testCase1 contact form page error test","tests/testCase1.spec.ts","",""
+"","150","@testCase2 submit contact form with all fields filled","","Fri May 30 07:42:34 UTC 2025","failed","Fri May 30 07:42:34 UTC 2025","@testCase2 contact form page sucess test","tests/testCase2.spec.ts","",""
+"","149","@testCase1 submit form with invalid telephone number","","Fri May 30 07:42:33 UTC 2025","failed","Fri May 30 07:42:33 UTC 2025","@testCase1 contact form page error test","tests/testCase1.spec.ts","",""
+"","260","@testCase1 submit empty form and then fill form","","Fri May 30 07:42:30 UTC 2025","failed","Fri May 30 07:42:30 UTC 2025","@testCase1 contact form page error test","tests/testCase1.spec.ts","",""
+"","152","@testCase3 add 2 Stuffed Frog, 5 Fluffy Bunny, 3 Valentine Bear to cart and verify the count","","Fri May 30 07:42:36 UTC 2025","failed","Fri May 30 07:42:36 UTC 2025","@testCase3 Buy 2 Stuffed Frog, 5 Fluffy Bunny, 3 Valentine Bear","tests/TestCase3.spec.ts","",""
+"","148","@testCase2 submit contact form with only mandatory fields","","Fri May 30 07:42:35 UTC 2025","failed","Fri May 30 07:42:35 UTC 2025","@testCase2 contact form page sucess test","tests/testCase2.spec.ts","",""

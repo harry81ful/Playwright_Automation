@@ -1,0 +1,86 @@
+# Test info
+
+- Name: @testCase1 contact form page error test >> @testCase1 submit empty form and then fill form
+- Location: /home/runner/work/PlanIt_Automation/PlanIt_Automation/tests/testCase1.spec.ts:16:7
+
+# Error details
+
+```
+Error: browserType.launch: Target page, context or browser has been closed
+Browser logs:
+
+╔════════════════════════════════════════════════════════════════════════════════════════════════╗
+║ Looks like you launched a headed browser without having a XServer running.                     ║
+║ Set either 'headless: true' or use 'xvfb-run <your-playwright-app>' before running Playwright. ║
+║                                                                                                ║
+║ <3 Playwright Team                                                                             ║
+╚════════════════════════════════════════════════════════════════════════════════════════════════╝
+Call log:
+  - <launching> /home/runner/.cache/ms-playwright/chromium-1169/chrome-linux/chrome --disable-field-trial-config --disable-background-networking --disable-background-timer-throttling --disable-backgrounding-occluded-windows --disable-back-forward-cache --disable-breakpad --disable-client-side-phishing-detection --disable-component-extensions-with-background-pages --disable-component-update --no-default-browser-check --disable-default-apps --disable-dev-shm-usage --disable-extensions --disable-features=AcceptCHFrame,AutoExpandDetailsElement,AvoidUnnecessaryBeforeUnloadCheckSync,CertificateTransparencyComponentUpdater,DeferRendererTasksAfterInput,DestroyProfileOnBrowserClose,DialMediaRouteProvider,ExtensionManifestV2Disabled,GlobalMediaControls,HttpsUpgrades,ImprovedCookieControls,LazyFrameLoading,LensOverlay,MediaRouter,PaintHolding,ThirdPartyStoragePartitioning,Translate --allow-pre-commit-input --disable-hang-monitor --disable-ipc-flooding-protection --disable-popup-blocking --disable-prompt-on-repost --disable-renderer-backgrounding --force-color-profile=srgb --metrics-recording-only --no-first-run --enable-automation --password-store=basic --use-mock-keychain --no-service-autorun --export-tagged-pdf --disable-search-engine-choice-screen --unsafely-disable-devtools-self-xss-warnings --no-sandbox --user-data-dir=/tmp/playwright_chromiumdev_profile-QVM8lY --remote-debugging-pipe --no-startup-window
+  - <launched> pid=5931
+  - [pid=5931][err] [5931:5931:0530/074230.579738:ERROR:ui/ozone/platform/x11/ozone_platform_x11.cc:249] Missing X server or $DISPLAY
+  - [pid=5931][err] [5931:5931:0530/074230.579784:ERROR:ui/aura/env.cc:257] The platform failed to initialize.  Exiting.
+
+```
+
+# Test source
+
+```ts
+   1 | import { test, expect } from "../fixtures/pomFixtures";
+   2 | import { foreName, surName, telephone } from "../utilities/util";
+   3 |
+   4 | test.describe("@testCase1 contact form page error test", () => {
+   5 |   test.beforeEach(async ({ page, landingPage, contactFormPage }) => {
+   6 |     await landingPage.goto();
+   7 |     await page.waitForLoadState("networkidle");
+   8 |
+   9 |     const isPageTitleVisible = await landingPage.isPageTitleVIsible();
+  10 |     await expect(isPageTitleVisible).toBeTruthy();
+  11 |
+  12 |     await landingPage.navBar("Contact");
+  13 |     await expect(contactFormPage.contactFormHeader).toBeVisible();
+  14 |   });
+  15 |
+> 16 |   test("@testCase1 submit empty form and then fill form", async ({
+     |       ^ Error: browserType.launch: Target page, context or browser has been closed
+  17 |     contactFormPage,
+  18 |   }) => {
+  19 |     await contactFormPage.submitContactForm();
+  20 |     const isErrorBannerVisible = await contactFormPage.errorBanner.isVisible();
+  21 |     await expect(isErrorBannerVisible).toBeTruthy();
+  22 |
+  23 |     await contactFormPage.fillContactForm();
+  24 |     const hasValidationError = await contactFormPage.hasAnyValidationError();
+  25 |     await expect(hasValidationError).toBeFalsy();
+  26 |   });
+  27 |
+  28 |   test("@testCase1 submit form with only forename and surname", async ({
+  29 |     contactFormPage,
+  30 |   }) => {
+  31 |     await contactFormPage.foreName.fill(foreName());
+  32 |     await contactFormPage.surName.fill(surName());
+  33 |     await contactFormPage.submitContactForm();
+  34 |     const hasAnyValidationError = await contactFormPage.hasAnyValidationError();
+  35 |     await expect(hasAnyValidationError).toBeTruthy();
+  36 |   });
+  37 |
+  38 |   test("@testCase1 submit with invalid email", async ({ contactFormPage }) => {
+  39 |     await contactFormPage.foreName.fill(foreName());
+  40 |     await contactFormPage.surName.fill(surName());
+  41 |     await contactFormPage.email.fill("invalid-email");
+  42 |     await contactFormPage.telephone.fill(telephone);
+  43 |     await contactFormPage.message.fill("This is a test message.");
+  44 |     // await contactFormPage.submitContactForm();
+  45 |   });
+  46 |
+  47 |   test("@testCase1 submit form with invalid telephone number", async ({
+  48 |     contactFormPage,
+  49 |   }) => {
+  50 |     await contactFormPage.fillContactForm();
+  51 |     await contactFormPage.telephone.fill("invalid-telephone");
+  52 |     const hasAnyValidationError = await contactFormPage.hasAnyValidationError();
+  53 |     await expect(hasAnyValidationError).toBeTruthy();
+  54 |   });
+  55 | });
+  56 |
+```
