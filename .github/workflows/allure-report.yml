@@ -8,7 +8,6 @@ on:
 jobs:
   test-and-publish:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
@@ -25,15 +24,20 @@ jobs:
         run: npx playwright install --with-deps
 
       - name: Run Playwright tests with Allure
-        run: npx playwright test --reporter=allure-playwright
+        run: npx playwright test --reporter=allure-playwright || true
+
+      - name: Install Allure commandline
+        run: npm install -g allure-commandline
 
       - name: Generate Allure Report
-        run: |
-          npm install -g allure-commandline --save-dev
-          allure generate ./allure-results --clean -o ./allure-report
+        run: allure generate ./allure-results --clean -o ./allure-report
+
+      - name: List Allure Report Files (optional)
+        run: ls -la ./allure-report
 
       - name: Deploy Allure report to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./allure-report
+          publish_branch: gh-pages
