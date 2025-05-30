@@ -37,4 +37,9 @@ export class JupiterToysLandingPage {
 
     await startShoppingButton.click();
   }
+
+  async getCartCount(): Promise<number> {
+    const cartcount = await this.page.locator("span.cart-count").textContent();
+    return parseInt(cartcount || "0", 10);
+  }
 }

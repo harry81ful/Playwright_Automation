@@ -10,3 +10,9 @@ export const foreName: () => string = () => faker.person.firstName(); //generate
 export const surName: () => string = () => faker.person.lastName(); //generate a new last name every time its called
 export const telephone = "02 12345678";
 export const message = () => faker.lorem.paragraph(); //generate a new message every time its called
+
+export const itemToAdd = [
+  { name: "Stuffed Frog", quantity: 2 },
+  { name: "Fluffy Bunny", quantity: 5 },
+  { name: "Valentine Bear", quantity: 3 },
+];

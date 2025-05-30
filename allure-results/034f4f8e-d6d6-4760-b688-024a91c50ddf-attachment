@@ -1,0 +1,148 @@
+# Test info
+
+- Name: @testCase3 Buy 2 Stuffed Frog, 5 Fluffy Bunny, 3 Valentine Bear >> @testCase3 add 2 Stuffed Frog, 5 Fluffy Bunny, 3 Valentine Bear to cart and verify the count
+- Location: C:\Users\khari\OneDrive\Desktop\Automations Playwright\PlanIt_Automation\tests\TestCase3.spec.ts:13:7
+
+# Error details
+
+```
+Error: expect(received).toEqual(expected) // deep equality
+
+Expected: NaN
+Received: 116.9
+    at C:\Users\khari\OneDrive\Desktop\Automations Playwright\PlanIt_Automation\tests\TestCase3.spec.ts:36:35
+```
+
+# Page snapshot
+
+```yaml
+- link "Jupiter Toys":
+  - /url: "#"
+  - img
+  - text: Jupiter Toys
+- list:
+  - listitem:
+    - link "Home":
+      - /url: "#/home"
+  - listitem:
+    - link "Shop":
+      - /url: "#/shop"
+  - listitem:
+    - link "Contact":
+      - /url: "#/contact"
+- list:
+  - listitem:
+    - link "Login":
+      - /url: ""
+  - listitem:
+    - link "Cart (10)":
+      - /url: "#/cart"
+- paragraph:
+  - text: There are 10 items in your cart, you can
+  - link "Checkout":
+    - /url: "#/checkout/"
+  - text: or carry on
+  - link "Shopping":
+    - /url: "#/shop/"
+  - text: .
+- table:
+  - rowgroup:
+    - row "Item Price Quantity Subtotal Actions":
+      - cell "Item"
+      - cell "Price"
+      - cell "Quantity"
+      - cell "Subtotal"
+      - cell "Actions"
+  - rowgroup:
+    - row "Stuffed Frog $10.99 2 $21.98":
+      - cell "Stuffed Frog":
+        - img
+        - text: Stuffed Frog
+      - cell "$10.99"
+      - cell "2":
+        - spinbutton: "2"
+      - cell "$21.98"
+      - cell:
+        - link:
+          - /url: ""
+    - row "Fluffy Bunny $9.99 5 $49.95":
+      - cell "Fluffy Bunny":
+        - img
+        - text: Fluffy Bunny
+      - cell "$9.99"
+      - cell "5":
+        - spinbutton: "5"
+      - cell "$49.95"
+      - cell:
+        - link:
+          - /url: ""
+    - row "Valentine Bear $14.99 3 $44.97":
+      - cell "Valentine Bear":
+        - img
+        - text: Valentine Bear
+      - cell "$14.99"
+      - cell "3":
+        - spinbutton: "3"
+      - cell "$44.97"
+      - cell:
+        - link:
+          - /url: ""
+  - rowgroup:
+    - 'row "Total: 116.9"':
+      - 'cell "Total: 116.9"':
+        - strong: "Total: 116.9"
+    - row "Check Out Empty Cart":
+      - cell "Check Out Empty Cart":
+        - link "Check Out":
+          - /url: "#/checkout"
+        - link "Empty Cart":
+          - /url: ""
+- separator
+- contentinfo:
+  - paragraph: © Jupiter Toys 2025
+```
+
+# Test source
+
+```ts
+   1 | import { test, expect } from "../fixtures/pomFixtures";
+   2 | import { itemToAdd } from "../utilities/util";
+   3 |
+   4 | test.describe("@testCase3 Buy 2 Stuffed Frog, 5 Fluffy Bunny, 3 Valentine Bear", () => {
+   5 |   test.beforeEach(async ({ page, landingPage, shopToys }) => {
+   6 |     await landingPage.goto();
+   7 |     await page.waitForLoadState("networkidle");
+   8 |     const isPageTitleVisible = await landingPage.isPageTitleVIsible();
+   9 |     await expect(isPageTitleVisible).toBeTruthy();
+  10 |     await landingPage.navBar("Shop");
+  11 |   });
+  12 |
+  13 |   test("@testCase3 add 2 Stuffed Frog, 5 Fluffy Bunny, 3 Valentine Bear to cart and verify the count", async ({
+  14 |     page,
+  15 |     shopToys,
+  16 |     landingPage,
+  17 |     inCartPage,
+  18 |   }) => {
+  19 |     let totalItems = 0;
+  20 |     for (const item of itemToAdd) {
+  21 |       await shopToys.searchForToy(item.name, item.quantity);
+  22 |       totalItems += item.quantity;
+  23 |     }
+  24 |     const count = await landingPage.getCartCount();
+  25 |     await expect(totalItems).toEqual(count);
+  26 |
+  27 |     await landingPage.navBar("Cart");
+  28 |     await page.waitForLoadState("networkidle");
+  29 |
+  30 |     const totalUniqueItemsadded = itemToAdd.length;
+  31 |     const itemCount = await inCartPage.itemsInCart();
+  32 |     await expect(itemCount).toEqual(totalUniqueItemsadded);
+  33 |
+  34 |     const calculatedPrice = await inCartPage.getCartItemTotalprice();
+  35 |     const totalPriceOnPage = await inCartPage.getCartTotalPrice();
+> 36 |     await expect(calculatedPrice).toEqual(totalPriceOnPage);
+     |                                   ^ Error: expect(received).toEqual(expected) // deep equality
+  37 |   });
+  38 | });
+  39 |
+```

@@ -1,0 +1,95 @@
+# Test info
+
+- Name: @testCase3 Buy 2 Stuffed Frog, 5 Fluffy Bunny, 3 Valentine Bear >> @testCase3 verify the total number of stuffed toys
+- Location: C:\Users\khari\OneDrive\Desktop\Automations Playwright\PlanIt_Automation\tests\TestCase3.spec.ts:27:7
+
+# Error details
+
+```
+Error: expect(received).toEqual(expected) // deep equality
+
+Expected: 0
+Received: 3
+    at C:\Users\khari\OneDrive\Desktop\Automations Playwright\PlanIt_Automation\tests\TestCase3.spec.ts:37:41
+```
+
+# Page snapshot
+
+```yaml
+- link "Jupiter Toys":
+  - /url: "#"
+  - img
+  - text: Jupiter Toys
+- list:
+  - listitem:
+    - link "Home":
+      - /url: "#/home"
+  - listitem:
+    - link "Shop":
+      - /url: "#/shop"
+  - listitem:
+    - link "Contact":
+      - /url: "#/contact"
+- list:
+  - listitem:
+    - link "Login":
+      - /url: ""
+  - listitem:
+    - link "Cart (0)":
+      - /url: "#/cart"
+- button "×"
+- strong: Your cart is empty
+- text: "- there's nothing to see here."
+- paragraph:
+  - link "Start Shopping »":
+    - /url: "#/shop"
+- separator
+- contentinfo:
+  - paragraph: © Jupiter Toys 2025
+```
+
+# Test source
+
+```ts
+   1 | import { test, expect } from "../fixtures/pomFixtures";
+   2 | import { itemToAdd } from "../utilities/util";
+   3 |
+   4 | test.describe("@testCase3 Buy 2 Stuffed Frog, 5 Fluffy Bunny, 3 Valentine Bear", () => {
+   5 |   test.beforeEach(async ({ page, landingPage, shopToys }) => {
+   6 |     await landingPage.goto();
+   7 |     await page.waitForLoadState("networkidle");
+   8 |     const isPageTitleVisible = await landingPage.isPageTitleVIsible();
+   9 |     await expect(isPageTitleVisible).toBeTruthy();
+  10 |     await landingPage.navBar("Shop");
+  11 |   });
+  12 |
+  13 |   test("@testCase3 add 2 Stuffed Frog, 5 Fluffy Bunny, 3 Valentine Bear to cart and verify the count", async ({
+  14 |     page,
+  15 |     shopToys,
+  16 |     landingPage,
+  17 |   }) => {
+  18 |     let totalItems = 0;
+  19 |     for (const item of itemToAdd) {
+  20 |       await shopToys.searchForToy(item.name, item.quantity);
+  21 |       totalItems += item.quantity;
+  22 |     }
+  23 |     const count = await landingPage.getCartCount();
+  24 |     await expect(totalItems).toEqual(count);
+  25 |   });
+  26 |
+  27 |   test("@testCase3 verify the total number of stuffed toys", async ({
+  28 |     inCartPage,
+  29 |     landingPage,
+  30 |     page,
+  31 |   }) => {
+  32 |     await landingPage.navBar("Cart");
+  33 |     await page.waitForLoadState("networkidle");
+  34 |
+  35 |     const totalUniqueItemsadded = itemToAdd.length;
+  36 |     const itemCount = await inCartPage.itemsInCart();
+> 37 |     await expect(totalUniqueItemsadded).toEqual(itemCount);
+     |                                         ^ Error: expect(received).toEqual(expected) // deep equality
+  38 |   });
+  39 | });
+  40 |
+```

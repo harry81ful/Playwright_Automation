@@ -1,0 +1,130 @@
+# Test info
+
+- Name: @testCase3 Buy 2 Stuffed Frog, 5 Fluffy Bunny, 3 Valentine Bear >> @testCase3 add 2 Stuffed Frog, 5 Fluffy Bunny, 3 Valentine Bear to cart
+- Location: C:\Users\khari\OneDrive\Desktop\Automations Playwright\PlanIt_Automation\tests\TestCase3.spec.ts:12:7
+
+# Error details
+
+```
+Error: expect(received).toBe(expected) // Object.is equality
+
+Expected: [Function getCartCount]
+Received: 10
+    at C:\Users\khari\OneDrive\Desktop\Automations Playwright\PlanIt_Automation\tests\TestCase3.spec.ts:21:34
+```
+
+# Page snapshot
+
+```yaml
+- link "Jupiter Toys":
+  - /url: "#"
+  - img
+  - text: Jupiter Toys
+- list:
+  - listitem:
+    - link "Home":
+      - /url: "#/home"
+  - listitem:
+    - link "Shop":
+      - /url: "#/shop"
+  - listitem:
+    - link "Contact":
+      - /url: "#/contact"
+- list:
+  - listitem:
+    - link "Login":
+      - /url: ""
+  - listitem:
+    - link "Cart (10)":
+      - /url: "#/cart"
+- list:
+  - listitem:
+    - heading "Teddy Bear" [level=4]
+    - img
+    - paragraph:
+      - text: $12.99
+      - link "Buy":
+        - /url: ""
+  - listitem:
+    - heading "Stuffed Frog" [level=4]
+    - img
+    - paragraph:
+      - text: $10.99
+      - link "Buy":
+        - /url: ""
+  - listitem:
+    - heading "Handmade Doll" [level=4]
+    - img
+    - paragraph:
+      - text: $10.99
+      - link "Buy":
+        - /url: ""
+  - listitem:
+    - heading "Fluffy Bunny" [level=4]
+    - img
+    - paragraph:
+      - text: $9.99
+      - link "Buy":
+        - /url: ""
+  - listitem:
+    - heading "Smiley Bear" [level=4]
+    - img
+    - paragraph:
+      - text: $14.99
+      - link "Buy":
+        - /url: ""
+  - listitem:
+    - heading "Funny Cow" [level=4]
+    - img
+    - paragraph:
+      - text: $10.99
+      - link "Buy":
+        - /url: ""
+  - listitem:
+    - heading "Valentine Bear" [level=4]
+    - img
+    - paragraph:
+      - text: $14.99
+      - link "Buy":
+        - /url: ""
+  - listitem:
+    - heading "Smiley Face" [level=4]
+    - img
+    - paragraph:
+      - text: $9.99
+      - link "Buy":
+        - /url: ""
+- separator
+- contentinfo:
+  - paragraph: © Jupiter Toys 2025
+```
+
+# Test source
+
+```ts
+   1 | import { test, expect } from "../fixtures/pomFixtures";
+   2 |
+   3 | test.describe("@testCase3 Buy 2 Stuffed Frog, 5 Fluffy Bunny, 3 Valentine Bear", () => {
+   4 |   test.beforeEach(async ({ page, landingPage, shopToys }) => {
+   5 |     await landingPage.goto();
+   6 |     await page.waitForLoadState("networkidle");
+   7 |     const isPageTitleVisible = await landingPage.isPageTitleVIsible();
+   8 |     await expect(isPageTitleVisible).toBeTruthy();
+   9 |     await landingPage.navBar("Shop");
+  10 |   });
+  11 |
+  12 |   test("@testCase3 add 2 Stuffed Frog, 5 Fluffy Bunny, 3 Valentine Bear to cart", async ({
+  13 |     page,
+  14 |     shopToys,
+  15 |     landingPage,
+  16 |   }) => {
+  17 |     await shopToys.searchForToy("Stuffed Frog", 2);
+  18 |     await shopToys.searchForToy("Fluffy Bunny", 5);
+  19 |     await shopToys.searchForToy("Valentine Bear", 3);
+  20 |     let totalCartItems = 2 + 5 + 3;
+> 21 |     await expect(totalCartItems).toBe(landingPage.getCartCount);
+     |                                  ^ Error: expect(received).toBe(expected) // Object.is equality
+  22 |   });
+  23 | });
+  24 |
+```
