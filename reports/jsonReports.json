@@ -68,298 +68,6 @@
   },
   "suites": [
     {
-      "title": "tests\\testCase1.spec.ts",
-      "file": "tests/testCase1.spec.ts",
-      "column": 0,
-      "line": 0,
-      "specs": [],
-      "suites": [
-        {
-          "title": "@testCase1 contact form page error test",
-          "file": "tests/testCase1.spec.ts",
-          "line": 4,
-          "column": 6,
-          "specs": [
-            {
-              "title": "@testCase1 submit empty form and then fill form",
-              "ok": true,
-              "tags": [
-                "testCase1",
-                "testCase1"
-              ],
-              "tests": [
-                {
-                  "timeout": 30000,
-                  "annotations": [],
-                  "expectedStatus": "passed",
-                  "projectId": "",
-                  "projectName": "",
-                  "results": [
-                    {
-                      "workerIndex": 0,
-                      "parallelIndex": 0,
-                      "status": "passed",
-                      "duration": 4022,
-                      "errors": [],
-                      "stdout": [],
-                      "stderr": [],
-                      "retry": 0,
-                      "startTime": "2025-05-30T07:39:05.564Z",
-                      "annotations": [],
-                      "attachments": [
-                        {
-                          "name": "screenshot",
-                          "contentType": "image/png",
-                          "path": "C:\\Users\\khari\\OneDrive\\Desktop\\Automations Playwright\\PlanIt_Automation\\test-results\\tests-testCase1--testCase1-ba55c-pty-form-and-then-fill-form\\test-finished-1.png"
-                        }
-                      ]
-                    }
-                  ],
-                  "status": "expected"
-                }
-              ],
-              "id": "cdcf0bbcb6f586e8d2fd-f7c6272cc44ac0b98b2a",
-              "file": "tests/testCase1.spec.ts",
-              "line": 16,
-              "column": 7
-            },
-            {
-              "title": "@testCase1 submit form with only forename and surname",
-              "ok": true,
-              "tags": [
-                "testCase1",
-                "testCase1"
-              ],
-              "tests": [
-                {
-                  "timeout": 30000,
-                  "annotations": [],
-                  "expectedStatus": "passed",
-                  "projectId": "",
-                  "projectName": "",
-                  "results": [
-                    {
-                      "workerIndex": 0,
-                      "parallelIndex": 0,
-                      "status": "passed",
-                      "duration": 3602,
-                      "errors": [],
-                      "stdout": [],
-                      "stderr": [],
-                      "retry": 0,
-                      "startTime": "2025-05-30T07:39:09.756Z",
-                      "annotations": [],
-                      "attachments": [
-                        {
-                          "name": "screenshot",
-                          "contentType": "image/png",
-                          "path": "C:\\Users\\khari\\OneDrive\\Desktop\\Automations Playwright\\PlanIt_Automation\\test-results\\tests-testCase1--testCase1-f9ce5-h-only-forename-and-surname\\test-finished-1.png"
-                        }
-                      ]
-                    }
-                  ],
-                  "status": "expected"
-                }
-              ],
-              "id": "cdcf0bbcb6f586e8d2fd-2d62e8c1b7e840188db8",
-              "file": "tests/testCase1.spec.ts",
-              "line": 28,
-              "column": 7
-            },
-            {
-              "title": "@testCase1 submit with invalid email",
-              "ok": true,
-              "tags": [
-                "testCase1",
-                "testCase1"
-              ],
-              "tests": [
-                {
-                  "timeout": 30000,
-                  "annotations": [],
-                  "expectedStatus": "passed",
-                  "projectId": "",
-                  "projectName": "",
-                  "results": [
-                    {
-                      "workerIndex": 0,
-                      "parallelIndex": 0,
-                      "status": "passed",
-                      "duration": 3125,
-                      "errors": [],
-                      "stdout": [],
-                      "stderr": [],
-                      "retry": 0,
-                      "startTime": "2025-05-30T07:39:13.364Z",
-                      "annotations": [],
-                      "attachments": [
-                        {
-                          "name": "screenshot",
-                          "contentType": "image/png",
-                          "path": "C:\\Users\\khari\\OneDrive\\Desktop\\Automations Playwright\\PlanIt_Automation\\test-results\\tests-testCase1--testCase1-6d536-1-submit-with-invalid-email\\test-finished-1.png"
-                        }
-                      ]
-                    }
-                  ],
-                  "status": "expected"
-                }
-              ],
-              "id": "cdcf0bbcb6f586e8d2fd-58e9d0e4b44538b8efc3",
-              "file": "tests/testCase1.spec.ts",
-              "line": 38,
-              "column": 7
-            },
-            {
-              "title": "@testCase1 submit form with invalid telephone number",
-              "ok": true,
-              "tags": [
-                "testCase1",
-                "testCase1"
-              ],
-              "tests": [
-                {
-                  "timeout": 30000,
-                  "annotations": [],
-                  "expectedStatus": "passed",
-                  "projectId": "",
-                  "projectName": "",
-                  "results": [
-                    {
-                      "workerIndex": 0,
-                      "parallelIndex": 0,
-                      "status": "passed",
-                      "duration": 3974,
-                      "errors": [],
-                      "stdout": [],
-                      "stderr": [],
-                      "retry": 0,
-                      "startTime": "2025-05-30T07:39:16.495Z",
-                      "annotations": [],
-                      "attachments": [
-                        {
-                          "name": "screenshot",
-                          "contentType": "image/png",
-                          "path": "C:\\Users\\khari\\OneDrive\\Desktop\\Automations Playwright\\PlanIt_Automation\\test-results\\tests-testCase1--testCase1-07839-th-invalid-telephone-number\\test-finished-1.png"
-                        }
-                      ]
-                    }
-                  ],
-                  "status": "expected"
-                }
-              ],
-              "id": "cdcf0bbcb6f586e8d2fd-a449720ca3b27fc3023d",
-              "file": "tests/testCase1.spec.ts",
-              "line": 47,
-              "column": 7
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "title": "tests\\testCase2.spec.ts",
-      "file": "tests/testCase2.spec.ts",
-      "column": 0,
-      "line": 0,
-      "specs": [],
-      "suites": [
-        {
-          "title": "@testCase2 contact form page sucess test",
-          "file": "tests/testCase2.spec.ts",
-          "line": 4,
-          "column": 6,
-          "specs": [
-            {
-              "title": "@testCase2 submit contact form with all fields filled",
-              "ok": true,
-              "tags": [
-                "testCase2",
-                "testCase2"
-              ],
-              "tests": [
-                {
-                  "timeout": 30000,
-                  "annotations": [],
-                  "expectedStatus": "passed",
-                  "projectId": "",
-                  "projectName": "",
-                  "results": [
-                    {
-                      "workerIndex": 0,
-                      "parallelIndex": 0,
-                      "status": "passed",
-                      "duration": 6096,
-                      "errors": [],
-                      "stdout": [],
-                      "stderr": [],
-                      "retry": 0,
-                      "startTime": "2025-05-30T07:39:20.489Z",
-                      "annotations": [],
-                      "attachments": [
-                        {
-                          "name": "screenshot",
-                          "contentType": "image/png",
-                          "path": "C:\\Users\\khari\\OneDrive\\Desktop\\Automations Playwright\\PlanIt_Automation\\test-results\\tests-testCase2--testCase2-04b0d-form-with-all-fields-filled\\test-finished-1.png"
-                        }
-                      ]
-                    }
-                  ],
-                  "status": "expected"
-                }
-              ],
-              "id": "953da94117a73ab3d200-dee2d44f4f51cb4dcf6a",
-              "file": "tests/testCase2.spec.ts",
-              "line": 16,
-              "column": 7
-            },
-            {
-              "title": "@testCase2 submit contact form with only mandatory fields",
-              "ok": true,
-              "tags": [
-                "testCase2",
-                "testCase2"
-              ],
-              "tests": [
-                {
-                  "timeout": 30000,
-                  "annotations": [],
-                  "expectedStatus": "passed",
-                  "projectId": "",
-                  "projectName": "",
-                  "results": [
-                    {
-                      "workerIndex": 0,
-                      "parallelIndex": 0,
-                      "status": "passed",
-                      "duration": 6475,
-                      "errors": [],
-                      "stdout": [],
-                      "stderr": [],
-                      "retry": 0,
-                      "startTime": "2025-05-30T07:39:26.591Z",
-                      "annotations": [],
-                      "attachments": [
-                        {
-                          "name": "screenshot",
-                          "contentType": "image/png",
-                          "path": "C:\\Users\\khari\\OneDrive\\Desktop\\Automations Playwright\\PlanIt_Automation\\test-results\\tests-testCase2--testCase2-ff2b1--with-only-mandatory-fields\\test-finished-1.png"
-                        }
-                      ]
-                    }
-                  ],
-                  "status": "expected"
-                }
-              ],
-              "id": "953da94117a73ab3d200-07e6fa700c3be93a2a81",
-              "file": "tests/testCase2.spec.ts",
-              "line": 32,
-              "column": 7
-            }
-          ]
-        }
-      ]
-    },
-    {
       "title": "tests\\TestCase3.spec.ts",
       "file": "tests/TestCase3.spec.ts",
       "column": 0,
@@ -391,7 +99,7 @@
                       "workerIndex": 0,
                       "parallelIndex": 0,
                       "status": "passed",
-                      "duration": 4100,
+                      "duration": 4144,
                       "errors": [],
                       "stdout": [
                         {
@@ -403,7 +111,7 @@
                       ],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2025-05-30T07:39:33.080Z",
+                      "startTime": "2025-05-30T23:47:50.844Z",
                       "annotations": [],
                       "attachments": [
                         {
@@ -429,9 +137,9 @@
   ],
   "errors": [],
   "stats": {
-    "startTime": "2025-05-30T07:39:04.738Z",
-    "duration": 32646.092,
-    "expected": 7,
+    "startTime": "2025-05-30T23:47:50.067Z",
+    "duration": 5402.564,
+    "expected": 1,
     "skipped": 0,
     "unexpected": 0,
     "flaky": 0
