@@ -4,7 +4,7 @@ const config: PlaywrightTestConfig = {
   testMatch: ["tests/**/*.spec.ts"],
   use: {
     baseURL: "https://jupiter.cloud.planittesting.com/",
-    headless: false, // Set to false if you want to see the browser during tests
+    headless: true, // Set to false if you want to see the browser during tests
     screenshot: "on", // Take screenshots only on test failure
     video: "retain-on-failure", // Record video only on test failure
     launchOptions: {
