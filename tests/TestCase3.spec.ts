@@ -1,15 +1,18 @@
 import { test, expect } from "../fixtures/pomFixtures";
 import { itemToAdd } from "../utilities/util";
 
+// Test suite for adding items to the cart
 test.describe("@testCase3 Buy 2 Stuffed Frog, 5 Fluffy Bunny, 3 Valentine Bear", () => {
   test.beforeEach(async ({ page, landingPage, shopToys }) => {
     await landingPage.goto();
-    await page.waitForLoadState("networkidle");
+    await page.waitForLoadState("networkidle"); // Wait for the page to load completely
+
     const isPageTitleVisible = await landingPage.isPageTitleVIsible();
-    await expect(isPageTitleVisible).toBeTruthy();
-    await landingPage.navBar("Shop");
+    await expect(isPageTitleVisible).toBeTruthy(); // Check if the page title is visible
+    await landingPage.navBar("Shop"); // Navigate to the Shop page
   });
 
+  // Test to add multiple items to the cart and verify the count
   test("@testCase3 add 2 Stuffed Frog, 5 Fluffy Bunny, 3 Valentine Bear to cart and verify the count", async ({
     page,
     shopToys,

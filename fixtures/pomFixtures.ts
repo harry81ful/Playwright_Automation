@@ -4,6 +4,8 @@ import { contactPage } from "../pages/contacFormPage";
 import { shopPageElements } from "../pages/shopPage";
 import { CartPage } from "../pages/CartPage";
 
+// This file defines the Playwright fixtures for the page objects used in the tests.
+// The custom fixtures so that the page object need not be initialized in every test file.
 type pages = {
   landingPage: JupiterToysLandingPage;
   contactFormPage: contactPage;

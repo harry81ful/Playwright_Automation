@@ -1,6 +1,8 @@
 import { Page, Locator } from "@playwright/test";
 import { foreName, surName, telephone, message } from "../utilities/util";
 
+// This class represents the contact page and provides methods to interact with the contact form.
+// Then pattern decision is used to showcase when a more granular approach is needed for page objects.
 export class contactPage {
   readonly page: Page;
   readonly contactFormHeader: Locator;
@@ -18,6 +20,7 @@ export class contactPage {
   readonly SuccessMessage: Locator;
   readonly modalBanner: Locator;
 
+  // The constructor initializes the page object and locators for the contact form elements.
   constructor(page: Page) {
     this.page = page;
     this.contactFormHeader = page.locator("strong", {
@@ -40,6 +43,7 @@ export class contactPage {
     this.modalBanner = page.locator(".modal-footer");
   }
 
+  // This method checks if the contact form is visible on the page. This menthod is useful during regression.
   async fillContactForm() {
     const firstName = foreName();
     const lastName = surName();
@@ -56,6 +60,7 @@ export class contactPage {
     await this.submitButton.click();
   }
 
+  //This method checks if any of the validation errors are visible on the page and returns a boolean value.
   async hasAnyValidationError(): Promise<boolean> {
     return (
       (await this.errorBanner.isVisible()) ||
@@ -66,9 +71,9 @@ export class contactPage {
     );
   }
 
-  async modalbanner(): Promise<void> {
-    await this.modalBanner.waitFor({ state: "visible" });
-    await this.modalBanner.waitFor({ state: "hidden" });
-    await this.page.waitForLoadState("networkidle");
-  }
+  // async modalbanner(): Promise<void> {
+  //   await this.modalBanner.waitFor({ state: "visible" });
+  //   await this.modalBanner.waitFor({ state: "hidden" });
+  //   await this.page.waitForLoadState("networkidle");
+  // }
 }
