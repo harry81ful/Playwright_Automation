@@ -9,7 +9,7 @@ The solution uses a modern automation framework designed using **Object-Oriented
 
 ## Tools and Framework
 
-    - Code Editor - VS Code
+    - **Code Editor**: VS Code
     -Language - Type script
     - Automation Framework - Playwright
     - Design Pattern - 	Page Object Model (POM)
