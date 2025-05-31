@@ -9,19 +9,19 @@ The solution uses a modern automation framework designed using **Object-Oriented
 
 ## Tools and Framework
 
-    - **Code Editor**: VS Code
-    -Language - Type script
-    - Automation Framework - Playwright
-    - Design Pattern - 	Page Object Model (POM)
-    - Fixtures - Custom fixtures injected for page abstraction
-    - CI/CD Compatibility	Easily runnable in pipelines with tags and isolated test cases
-    - Reporting - Allure and json reports
+    - Code Editor: VS Code
+    - Language: Type script
+    - Automation Framework: Playwright
+    - Design Pattern: 	Page Object Model (POM)
+    - Fixtures: Custom fixtures injected for page abstraction
+    - CI/CD Compatibility:	Easily runnable in pipelines with tags and isolated test cases
+    - Reporting: Allure and json reports
 
 ## Getting Started
 
 - Cloning repository
   - The automation scripts can be cloned from repository 'https://github.com/harry81ful/PlanIt_Automation'
-- Pre-requisities
+- Prerequisites
 
   - VS code or any other tool of choice installed
   - Node.Js is installed
@@ -29,14 +29,14 @@ The solution uses a modern automation framework designed using **Object-Oriented
 
 - Installation
 
-  - After cloning to clone, users can install dependencies using <npm install>. User can also install separatley all the required tools
-  - Install plawright from the extensions (VS code as an example)
+  - After cloning the repository, users can install dependencies using <npm install>. User can also install separately all the required tools
+  - Install playwright from the extensions (VS code as an example)
 
 - Clean Install
   - If you get version conflicts or unexpected errors <rm -rf node_modules package-lock.json> and <npm cache clean --force>
   - Install dependencies with <npm install -D playwright@latest >
   - Faker for generating names, address, phone number etc using <npm install -D @faker-js/faker>
-  - Allure reports can installed using <npm install -D allure-playwright> adn install command line with <npm install -g allure-commandline --save-dev>
+  - Allure reports can installed using <npm install -D allure-playwright> and install command line with <npm install -g allure-commandline --save-dev>
 
 ## Running tests
 
@@ -45,8 +45,8 @@ The solution uses a modern automation framework designed using **Object-Oriented
 - Individual tests:
 
   - If users want to run individual test then we can make use of tags in the code <npx playwright test --grep @testCase1>
-  - The second test case require to be run five time which can be achieved by <npx playwright test --grep @testCase2 --repeat-each 5>
-    Note: Since I am using custom fixture for a clean test script the avaialble repeat method in playwright can not be used
+  - The second test case requires to be run five times which can be achieved by <npx playwright test --grep @testCase2 --repeat-each 5>
+    Note: Since I am using custom fixture for a clean test script the available repeat method in playwright can not be used
 
 - Generate Reports: Reports can be generated in multiple ways.
 
