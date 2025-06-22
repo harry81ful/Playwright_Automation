@@ -1,4 +1,4 @@
-# PlanIt_Automation
+# Playwright_Automation
 
 ## Project Overview
 
